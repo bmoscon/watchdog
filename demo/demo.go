@@ -10,10 +10,18 @@
 package main
 
 import (
-	"net/http"
+	"fmt"
+	"os"
+
+	"github.com/bmoscon/watchdog/heartbeat"
 )
 
 func main() {
-	url := "http://127.0.0.1:8888/heartbeat?id=demo/demo"
-	http.Get(url)
+	path, err := os.Executable()
+
+	if err != nil {
+		fmt.Printf("Error: %v", err)
+	} else {
+		heartbeat.Heartbeat("127.0.0.1:8888", path)
+	}
 }
