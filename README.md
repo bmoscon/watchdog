@@ -15,5 +15,5 @@ $ ./watchdog&
 $ ./example
 ```
 
-`example` will register itself with `watchdog` and then exit. `watchdog` will restart `example` (which will simply exit) endlessly.
+`example` will register itself with `watchdog` and then exit. `watchdog` will restart `example` (which will simply exit) endlessly. You can observe this behavior in `watchdog.log`
 
