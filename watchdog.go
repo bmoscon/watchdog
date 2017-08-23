@@ -14,6 +14,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"syscall"
 	"time"
 )
 
@@ -31,6 +32,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 func restart(name string) {
 	cmd := exec.Command(name)
+	cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
 	err := cmd.Start()
 
 	if err != nil {
